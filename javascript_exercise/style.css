@@ -1,7 +1,11 @@
+/*gives the whole body a green background */
+
 body {
   background-color: #a2d02e !important;
 }
 
+
+/*rounded border with black text and background color inherited from body */
 .inc-btn {
   background-color: inherit;
   border: 2px solid black;
@@ -11,11 +15,14 @@ body {
   color: black;
 }
 
+
+/*makes the button black with green text when you hover on it */
 .inc-btn:hover {
   background-color: black;
   color: #a2d02e;
 }
 
+/*smaller button with same properties*/
 .inc2-btn {
   background-color: inherit;
   border: 2px solid black;
