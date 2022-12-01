@@ -134,6 +134,13 @@ const updateUser = (userId) => {
 
 
 const deleteRow = (r) => {
-  const i = r.parentNode.parentNode.rowIndex;
-  document.getElementById("myTable").deleteRow(i);
+  const result = confirm("Are you sure to delete?");
+
+  if (result) {
+    const i = r.parentNode.parentNode.rowIndex;
+    document.getElementById("myTable").deleteRow(i);
+  } else {
+    return false;
+  }
+  
 };
