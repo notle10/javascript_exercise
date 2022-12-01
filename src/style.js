@@ -70,7 +70,7 @@ const addNewTableRow = (name, surname, appointmentDate) => {
     surname +
     "</td><td>" +
     appointmentDate +
-    "</td><td><button>Edit data</button></td></tr>";
+    "</td><td></td></tr>";
 
   document.getElementById("result").innerHTML += newRow;
 };
@@ -107,7 +107,22 @@ const editUser = (button) => {
 };
 
 const updateUser = (userId) => {
-  //find the row with this id and update TDs
-  alert(userId);
+  const updatedName = document.getElementById("firstname").value;
+  const updatedSurname = document.getElementById("lastname").value;
+  const updatedRow = document.getElementById(userId);
+
+  updatedRow.getElementsByClassName("name")[0].innerText = updatedName;
+  updatedRow.getElementsByClassName("surname")[0].innerText = updatedSurname;
+
+  console.log(updatedName);
+  console.log(updatedSurname);
+
   hideModal();
+};
+
+//const deleteRow = (userId) => {};
+
+const deleteRow = (r) => {
+  const i = r.parentNode.parentNode.rowIndex;
+  document.getElementById("myTable").deleteRow(i);
 };
