@@ -9,6 +9,7 @@ const span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function () {
+  document.getElementById("save-changes").onclick = addData;
   showModal();
 };
 
@@ -30,9 +31,8 @@ const addData = () => {
   const lastname = document.getElementById("lastname").value;
   const appDate = document.getElementById("firstdate").value;
 
+  //returns an alert if the inputs are empty, adds the information with a new table row if they are provided and cleans the inputs after being added and closes the modal
 
-//returns an alert if the inputs are empty, adds the information with a new table row if they are provided and cleans the inputs after being added and closes the modal
-  
   if (!validateAppointmentData([firstname, lastname, appDate])) {
     alert("Please enter something first!");
   } else {
@@ -51,9 +51,9 @@ const cleanInputs = (inputIds) => {
 
 //hides the modal
 const hideModal = () => {
+  cleanInputs(["firstname", "lastname", "firstdate"]);
   modal.style.display = "none";
 };
-
 
 //shows the modal
 const showModal = () => {
@@ -61,19 +61,24 @@ const showModal = () => {
 };
 
 // adds a new table row with the information provided from the user
-const addNewTableRow = (x, y, z) => {
+const addNewTableRow = (name, surname, appointmentDate) => {
   let newRow = "";
-  newRow = "<tr><td>" + x + "</td><td>" + y + "</td><td>" + z + "</td></tr>";
+  newRow =
+    "<tr><td>" +
+    name +
+    "</td><td>" +
+    surname +
+    "</td><td>" +
+    appointmentDate +
+    "</td><td><button>Edit data</button></td></tr>";
 
   document.getElementById("result").innerHTML += newRow;
 };
-
 
 //checks if the inputs from the modal are empty
 const isInputEmpty = (value) => {
   return value == "" ? true : false;
 };
-
 
 //validates if the inputs are empty and returns a true or false
 const validateAppointmentData = (data) => {
@@ -84,4 +89,25 @@ const validateAppointmentData = (data) => {
   }
 
   return true;
+};
+
+const editUser = (button) => {
+  const userId = button.parentElement.parentElement.id;
+  document.getElementById("save-changes").onclick = () => updateUser(userId);
+
+  const userRow = document.getElementById(userId);
+  const name = userRow.getElementsByClassName("name")[0].innerText;
+  const surname = userRow.getElementsByClassName("surname")[0].innerText;
+  const date = userRow.getElementsByClassName("date")[0].innerText;
+  document.getElementById("firstname").value = name;
+  document.getElementById("lastname").value = surname;
+  document.getElementById("firstdate").value = date;
+
+  showModal();
+};
+
+const updateUser = (userId) => {
+  //find the row with this id and update TDs
+  alert(userId);
+  hideModal();
 };
