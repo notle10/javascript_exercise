@@ -63,14 +63,26 @@ const showModal = () => {
 // adds a new table row with the information provided from the user
 const addNewTableRow = (name, surname, appointmentDate) => {
   let newRow = "";
+  const countRows = document.getElementById("result").childElementCount + 1;
+
   newRow =
-    "<tr><td>" +
+    "<tr id=" +
+    countRows +
+    ">" +
+    "<td class='name'>" +
     name +
-    "</td><td>" +
+    "</td>" +
+    "<td class='surname'>" +
     surname +
-    "</td><td>" +
+    "</td>" +
+    "<td class='date'>" +
     appointmentDate +
-    "</td><td></td></tr>";
+    "</td>" +
+    "<td>" +
+    "<button class='inc2-btn' onclick='editUser(this)'>Edit</button>" +
+    " <button class='inc2-btn' onclick='deleteRow(this)'>Delete</button>" +
+    "</td>" +
+    "</tr>";
 
   document.getElementById("result").innerHTML += newRow;
 };
@@ -120,7 +132,6 @@ const updateUser = (userId) => {
   hideModal();
 };
 
-//const deleteRow = (userId) => {};
 
 const deleteRow = (r) => {
   const i = r.parentNode.parentNode.rowIndex;
