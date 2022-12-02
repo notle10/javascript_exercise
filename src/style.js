@@ -51,7 +51,8 @@ const cleanInputs = (inputIds) => {
 
 const cleanVal = (divIds) => {
   for (let i = 0; i < divIds.length; i++) {
-    document.getElementById(divIds[i]).value = "";
+    console.log("divIds[i] => ", divIds[i]);
+    document.getElementById(divIds[i]).innerHTML = "";
   }
 };
 
