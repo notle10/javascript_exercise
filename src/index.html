@@ -25,33 +25,34 @@
 
     <div class="modal" id="myModal">
       <div class="modal-content container col-md-3">
-        <span class="close" id="closeModal">&times;</span>
+        
         
         <!--form with inputs to provide the information-->
-        <form class="container col-md-6">
+        <form class="container col-md-12">
 
-            <div class="form-group col-md-8">
+            <div class="form-group col-md-12">
               <label>First Name</label>
                 <input onblur="validateForm()" type="text" id="firstname" class="form-control"/>
             </div> 
             <div class="form-group col-md-8" id="div1"></div>       
           
-          <div class="form-group col-md-8">
+          <div class="form-group col-md-12">
             <label>Last Name</label>
             <input onblur="validateForm()" type="text" id="lastname" class="form-control" />
           </div>
           <div class="form-group col-md-8" id="div2"></div>
 
-          <div class="form-group col-md-8">
+          <div class="form-group col-md-12">
             <label>Date</label>
             <input onblur="validateForm()" type="date" id="firstdate" class="form-control" />
           </div>
           <div class="form-group col-md-8" id="div3"></div>
 
           <div class="col-md-4 mt-4 form-group">
-            <button type="button" class="inc2-btn" id="save-changes" onclick="addData()">
+            <button type="button" class="savebtn" id="save-changes" onclick="addData()">
               Save
             </button>
+            <button type="button" class="closebtn" id="closeModal" onclick="hideModal()">Close</span>
           </div>
         </form>
       </div>
@@ -62,10 +63,10 @@
       <table id="myTable" class="table">
         <thead>
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Date</th>
-            <th>Action</th>
+            <th class="inc-white-color">First Name</th>
+            <th class="inc-white-color">Last Name</th>
+            <th class="inc-white-color">Date</th>
+            <th class="inc-white-color">Action</th>
           </tr>
           
         </thead>

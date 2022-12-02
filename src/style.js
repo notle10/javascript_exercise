@@ -5,7 +5,7 @@ const modal = document.getElementById("myModal");
 const btn = document.getElementById("openModal");
 
 // Get the <span> element that closes the modal
-const span = document.getElementsByClassName("close")[0];
+const span = document.getElementsByClassName("closebtn")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function () {
@@ -49,9 +49,16 @@ const cleanInputs = (inputIds) => {
   }
 };
 
+const cleanVal = (divIds) => {
+  for (let i = 0; i < divIds.length; i++) {
+    document.getElementById(divIds[i]).value = "";
+  }
+};
+
 //hides the modal
 const hideModal = () => {
   cleanInputs(["firstname", "lastname", "firstdate"]);
+  cleanVal(["div1", "div2", "div3"]);
   modal.style.display = "none";
 };
 
@@ -69,18 +76,18 @@ const addNewTableRow = (name, surname, appointmentDate) => {
     "<tr id=" +
     countRows +
     ">" +
-    "<td class='name'>" +
+    "<td class='name inc-white-color'>" +
     name +
     "</td>" +
-    "<td class='surname'>" +
+    "<td class='surname inc-white-color'>" +
     surname +
     "</td>" +
-    "<td class='date'>" +
+    "<td class='date inc-white-color'>" +
     appointmentDate +
     "</td>" +
     "<td>" +
-    "<button class='inc2-btn' onclick='editUser(this)'>Edit</button>" +
-    " <button class='inc2-btn' onclick='deleteRow(this)'>Delete</button>" +
+    "<button class='editbtn' onclick='editUser(this)'>Edit</button>" +
+    " <button class='deletebtn' onclick='deleteRow(this)'>Delete</button>" +
     "</td>" +
     "</tr>";
 
@@ -121,10 +128,12 @@ const editUser = (button) => {
 const updateUser = (userId) => {
   const updatedName = document.getElementById("firstname").value;
   const updatedSurname = document.getElementById("lastname").value;
+  const updatedDate = document.getElementById("firstdate").value;
   const updatedRow = document.getElementById(userId);
 
   updatedRow.getElementsByClassName("name")[0].innerText = updatedName;
   updatedRow.getElementsByClassName("surname")[0].innerText = updatedSurname;
+  updatedRow.getElementsByClassName("date")[0].innerText = updatedDate;
 
   console.log(updatedName);
   console.log(updatedSurname);
@@ -150,14 +159,14 @@ const validateForm = () => {
 
   if (vName === "") {
     document.getElementById("div1").innerHTML = "Please enter your name";
-    document.getElementById("div1").style.color = "red";
+    document.getElementById("div1").style.color = "#A72608";
   } else {
     document.getElementById("div1").innerHTML = "";
   }
 
   if (vLastName === "") {
     document.getElementById("div2").innerHTML = "Please enter your last name";
-    document.getElementById("div2").style.color = "red";
+    document.getElementById("div2").style.color = "#A72608";
   } else {
     document.getElementById("div2").innerHTML = "";
   }
@@ -165,7 +174,7 @@ const validateForm = () => {
   if (vDate === "") {
     document.getElementById("div3").innerHTML =
       "Please enter your schedule date";
-    document.getElementById("div3").style.color = "red";
+    document.getElementById("div3").style.color = "#A72608";
   } else {
     document.getElementById("div3").innerHTML = "";
   }
