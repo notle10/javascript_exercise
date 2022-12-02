@@ -29,14 +29,19 @@
         
         <!--form with inputs to provide the information-->
         <form class="container col-md-6">
-          <div class="form-group col-md-8">
-            <label>First Name</label>
-            <input type="text" id="firstname" class="form-control" />
-          </div>
+          
+            <div class="form-group col-md-8">
+              <label>First Name</label>
+                <input onblur="validateForm()" type="text" id="firstname" class="form-control"/>
+            </div> 
+            <div class="form-group col-md-8" id="div1"></div>       
+          
           <div class="form-group col-md-8">
             <label>Last Name</label>
-            <input type="text" id="lastname" class="form-control" />
+            <input onblur="validateForm()" type="text" id="lastname" class="form-control" />
           </div>
+          <div class="form-group col-md-8" id="div2"></div>
+
           <div class="form-group col-md-8">
             <label>Date</label>
             <input type="date" id="firstdate" class="form-control" />
