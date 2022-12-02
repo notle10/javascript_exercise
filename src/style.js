@@ -33,13 +33,13 @@ const addData = () => {
 
   //returns an alert if the inputs are empty, adds the information with a new table row if they are provided and cleans the inputs after being added and closes the modal
 
-  // if (!validateAppointmentData([firstname, lastname, appDate])) {
-  //   alert("Please enter something first!");
-  // } else {
-  //   addNewTableRow(firstname, lastname, appDate);
-  //   cleanInputs(["firstname", "lastname", "firstdate"]);
-  //   hideModal();
-  // }
+  if (!validateAppointmentData([firstname, lastname, appDate])) {
+    return validateForm();
+  } else {
+    addNewTableRow(firstname, lastname, appDate);
+    cleanInputs(["firstname", "lastname", "firstdate"]);
+    hideModal();
+  }
 };
 
 // Cleans the inputs after being saved and the modal is closed
@@ -133,7 +133,7 @@ const updateUser = (userId) => {
 };
 
 const deleteRow = (r) => {
-  const result = confirm("Are you sure to delete?");
+  const result = confirm("Are you sure you want to delete?");
 
   if (result) {
     const i = r.parentNode.parentNode.rowIndex;
@@ -146,6 +146,7 @@ const deleteRow = (r) => {
 const validateForm = () => {
   const vName = document.getElementById("firstname").value;
   const vLastName = document.getElementById("lastname").value;
+  const vDate = document.getElementById("firstdate").value;
 
   if (vName === "") {
     document.getElementById("div1").innerHTML = "Please enter your name";
@@ -159,5 +160,13 @@ const validateForm = () => {
     document.getElementById("div2").style.color = "red";
   } else {
     document.getElementById("div2").innerHTML = "";
+  }
+
+  if (vDate === "") {
+    document.getElementById("div3").innerHTML =
+      "Please enter your schedule date";
+    document.getElementById("div3").style.color = "red";
+  } else {
+    document.getElementById("div3").innerHTML = "";
   }
 };
